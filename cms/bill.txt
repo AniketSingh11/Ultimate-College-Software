@@ -1,0 +1,911 @@
+<? ob_start(); ?>
+<!doctype html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <!-- Use the .htaccess and remove these lines to avoid edge case issues.
+       More info: h5bp.com/b/378 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>School/College Management Solution</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory: mathiasbynens.be/notes/touch-icons -->
+
+  <!-- CSS: implied media=all -->
+  <!-- CSS concatenated and minified via ant build script-->
+  <link rel="stylesheet" href="css/style.css"> <!-- Generic style (Boilerplate) -->
+  <link rel="stylesheet" href="css/960.fluid.css"> <!-- 960.gs Grid System -->
+  <link rel="stylesheet" href="css/main.css"> <!-- Complete Layout and main styles -->
+  <link rel="stylesheet" href="css/buttons.css"> <!-- Buttons, optional -->
+  <link rel="stylesheet" href="css/lists.css"> <!-- Lists, optional -->
+  <link rel="stylesheet" href="css/icons.css"> <!-- Icons, optional -->
+  <link rel="stylesheet" href="css/notifications.css"> <!-- Notifications, optional -->
+  <link rel="stylesheet" href="css/typography.css"> <!-- Typography -->
+  <link rel="stylesheet" href="css/forms.css"> <!-- Forms, optional -->
+  <link rel="stylesheet" href="css/tables.css"> <!-- Tables, optional -->
+  <link rel="stylesheet" href="css/charts.css"> <!-- Charts, optional -->
+  <link rel="stylesheet" href="css/jquery-ui-1.8.15.custom.css"> <!-- jQuery UI, optional -->
+  <!-- end CSS-->
+  
+  <!-- Fonts 
+  <link href="//fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet" type="text/css">-->
+  <!-- end Fonts-->
+<link rel="stylesheet" href="css/metallic.css" type="text/css">
+  <!-- More ideas for your <head> here: h5bp.com/d/head-Tips -->
+
+  <!-- All JavaScript at the bottom, except for Modernizr / Respond.
+       Modernizr enables HTML5 elements & feature detects; Respond is a polyfill for min/max-width CSS3 Media Queries
+       For optimal performance, use a custom Modernizr build: www.modernizr.com/download/ -->
+  <script src="js/libs/modernizr-2.0.6.min.js"></script>
+ <link type="text/css" rel="stylesheet" href="css/animate.css"> 
+ <style type="text/css">
+a.tooltip {outline:none; float:right; }
+a.tooltip strong {line-height:30px;}
+a.tooltip:hover {text-decoration:none;} 
+a.tooltip span {
+    z-index:10;display:none; padding:14px 10px 14px;
+    margin-top:13px; margin-left:-160px;
+    width:320px; 
+}
+@-moz-document url-prefix() { 
+  a.tooltip span {
+     margin-top:30px; margin-left:-190px;
+  }
+}
+a.tooltip:hover span{
+    display:inline; position:absolute; 
+    border:2px solid #0D5889;  color:#363535;
+    background:#FFFFFF;
+}
+a.tooltip:hover table{ width:100%; }
+a.tooltip:hover table td{background-color:transparent;}
+.callout {z-index:20;position:absolute;border:0;top:-14px;left:120px;}
+    
+/*CSS3 extras*/
+a.tooltip span
+{
+    border-radius:2px;        
+    box-shadow: 0px 0px 8px 4px #666;
+    /*opacity: 0.8;*/
+}
+</style>
+ <link rel="stylesheet" href="Book_inventory/stylesheets/sample_pages/invoice.css" type="text/css" />
+</head>
+
+<body id="top">
+
+  <!-- Begin of #container -->
+  <div id="container">
+  	<!-- Begin of #header -->
+    <div id="header-surround"><header id="header">
+    	
+    	<!-- Place your logo here -->
+		<img src="img/logo_sms.png" alt="SMS" class="logo">
+		
+		<!-- Divider between info-button and the toolbar-icons -->
+		<div class="divider-header divider-vertical"></div>
+		
+		<!-- Info-Button -->
+		<a href="javascript:void(0);" onclick="$('#info-dialog').dialog({ modal: true });"><span class="btn-info"></span></a>
+		
+			<!-- Modal Box Content -->
+			<div id="info-dialog" title="About" style="display: none;">
+				<p>Hey there! Welcome to the <strong>&quot;School/College Management Solution&quot;</strong> admin Panel.</p>
+                <p> I hope you enjoy your stay and please make sure, that you visit the other pages.</p>				
+			</div> <!--! end of #info-dialog -->
+		
+		<!-- Begin from Toolbox -->
+        		
+			 <div id="info-dialog12345" title="Expire Vehicle  :  details" style="display: none; width:900px;">
+		 
+		 		 
+		  <div class="alert error" style="float: left;">Vehicle no1 TN 85 1104 is Already Insurance  Expire on 17/11/2015 ( 123 days before) &nbsp;<span class="hide">X </span></div>
+		 		 		 		 		 
+		 		 		 	      <div class="alert warning" style="float: left;">Vehicle no TN 85 1104 is Vehicle FC  Expire on 20/03/2016  ( 1 days ago) &nbsp;<span class="hide">X  </span></div>
+		 		 		 		 
+		 		 		 		 		
+		 
+	 
+               
+                		 
+		  <div class="alert error" style="float: left;">Vehicle no1 TN 85 1608 is Already Insurance  Expire on 17/11/2015 ( 123 days before) &nbsp;<span class="hide">X </span></div>
+		 		 		 		 		 
+		 		 		 	      <div class="alert warning" style="float: left;">Vehicle no TN 85 1608 is Vehicle FC  Expire on 01/04/2016  ( 13 days ago) &nbsp;<span class="hide">X  </span></div>
+		 		 		 		 
+		 		 		 		 		
+		 
+	 
+               
+                		 
+		  <div class="alert error" style="float: left;">Vehicle no1 TN 85 1668 is Already Insurance  Expire on 17/11/2015 ( 123 days before) &nbsp;<span class="hide">X </span></div>
+		 		 		 		 		 
+		 		 		 	      <div class="alert warning" style="float: left;">Vehicle no TN 85 1668 is Vehicle FC  Expire on 02/04/2016  ( 14 days ago) &nbsp;<span class="hide">X  </span></div>
+		 		 		 		 
+		 		 		 		 		
+		 
+	 
+               
+                		 
+		  <div class="alert error" style="float: left;">Vehicle no1 TN 85 3989 is Already Insurance  Expire on 17/11/2015 ( 123 days before) &nbsp;<span class="hide">X </span></div>
+		 		 		 		 		 
+		 		 		 	      <div class="alert warning" style="float: left;">Vehicle no TN 85 3989 is Vehicle FC  Expire on 02/04/2016  ( 14 days ago) &nbsp;<span class="hide">X  </span></div>
+		 		 		 		 
+		 		 		 		 		
+		 
+	 
+               
+                		 
+		  <div class="alert error" style="float: left;">Vehicle no1 TN 85 1614 is Already Insurance  Expire on 17/11/2015 ( 123 days before) &nbsp;<span class="hide">X </span></div>
+		 		 		 		 		 
+		 		 		 	      <div class="alert warning" style="float: left;">Vehicle no TN 85 1614 is Vehicle FC  Expire on 02/04/2016  ( 14 days ago) &nbsp;<span class="hide">X  </span></div>
+		 		 		 		 
+		 		 		 		 		
+		 
+	 
+               
+                		 
+		  <div class="alert error" style="float: left;">Vehicle no1 TN 85 3974 is Already Insurance  Expire on 17/11/2015 ( 123 days before) &nbsp;<span class="hide">X </span></div>
+		 		
+		 
+	 
+               
+                		 
+		  <div class="alert error" style="float: left;">Vehicle no1 TN 85 4019 is Already Insurance  Expire on 17/11/2015 ( 123 days before) &nbsp;<span class="hide">X </span></div>
+		 		
+		 
+	 
+               
+                		 
+		  <div class="alert error" style="float: left;">Vehicle no1 TN 85 4075 is Already Insurance  Expire on 17/11/2015 ( 123 days before) &nbsp;<span class="hide">X </span></div>
+		 		
+		 
+	 
+               
+                		 
+		  <div class="alert error" style="float: left;">Vehicle no1 TN 85 4947 is Already Insurance  Expire on 17/11/2015 ( 123 days before) &nbsp;<span class="hide">X </span></div>
+		 		
+		 
+	 
+               
+                		 
+		  <div class="alert error" style="float: left;">Vehicle no1 TN 85 4988 is Already Insurance  Expire on 17/11/2015 ( 123 days before) &nbsp;<span class="hide">X </span></div>
+		 		
+		 
+	 
+               
+                		 
+		  <div class="alert error" style="float: left;">Vehicle no1 TN 85 4956 is Already Insurance  Expire on 17/11/2015 ( 123 days before) &nbsp;<span class="hide">X </span></div>
+		 		
+		 
+	 
+               
+                		 
+		  <div class="alert error" style="float: left;">Vehicle no1 TN 85 5729 is Already Insurance  Expire on 17/11/2015 ( 123 days before) &nbsp;<span class="hide">X </span></div>
+		 		
+		 
+	 
+               
+                		 
+		  <div class="alert error" style="float: left;">Vehicle no1 TN 85 5971 is Already Insurance  Expire on 17/11/2015 ( 123 days before) &nbsp;<span class="hide">X </span></div>
+		 		
+		 
+	 
+               
+                		 
+		  <div class="alert error" style="float: left;">Vehicle no1 TN 85 A 9877 is Already Insurance  Expire on 17/11/2015 ( 123 days before) &nbsp;<span class="hide">X </span></div>
+		 		
+		 
+	 
+               
+                		 
+		  <div class="alert error" style="float: left;">Vehicle no1 TN 85 1598 is Already Insurance  Expire on 03/03/2016 ( 16 days before) &nbsp;<span class="hide">X </span></div>
+		 		 		 		 		 
+		 		 		 	      <div class="alert warning" style="float: left;">Vehicle no TN 85 1598 is Vehicle FC  Expire on 01/04/2016  ( 13 days ago) &nbsp;<span class="hide">X  </span></div>
+		 		 		 		 
+		 		 		 		 		
+		 
+	 
+               
+                		 		 
+		 	      <div class="alert warning" style="float: left;">Vehicle no TN 85 A 6102 is Insurance  Expire on 22/03/2016  ( 3 days ago) &nbsp;<span class="hide">X  </span></div>
+		 		 
+		 		 		
+		 
+	 
+               
+                		 		 
+		 	      <div class="alert warning" style="float: left;">Vehicle no TN 85 A 6079 is Insurance  Expire on 23/03/2016  ( 4 days ago) &nbsp;<span class="hide">X  </span></div>
+		 		 
+		 		 		
+		 
+	 
+               
+                		 		 
+		 	      <div class="alert warning" style="float: left;">Vehicle no TN 85 A 6093 is Insurance  Expire on 23/03/2016  ( 4 days ago) &nbsp;<span class="hide">X  </span></div>
+		 		 
+		 		 		
+		 
+	 
+               
+                		 		 
+		 	      <div class="alert warning" style="float: left;">Vehicle no TN 85 A 6105 is Insurance  Expire on 23/03/2016  ( 4 days ago) &nbsp;<span class="hide">X  </span></div>
+		 		 
+		 		 		
+		 
+	 
+               
+                		 		 
+		 	      <div class="alert warning" style="float: left;">Vehicle no TN 85 A 6114 is Insurance  Expire on 23/03/2016  ( 4 days ago) &nbsp;<span class="hide">X  </span></div>
+		 		 
+		 		 		
+		 
+	 
+               
+                		 		 
+		 	      <div class="alert warning" style="float: left;">Vehicle no TN 85 A 6113 is Insurance  Expire on 23/03/2016  ( 4 days ago) &nbsp;<span class="hide">X  </span></div>
+		 		 
+		 		 		
+		 
+	 
+               
+                		 		 
+		 	      <div class="alert warning" style="float: left;">Vehicle no TN 85 A 6108 is Insurance  Expire on 25/03/2016  ( 6 days ago) &nbsp;<span class="hide">X  </span></div>
+		 		 
+		 		 		
+		 
+	 
+               
+                		 		 
+		 	      <div class="alert warning" style="float: left;">Vehicle no TN 85 A 6602 is Insurance  Expire on 06/04/2016  ( 18 days ago) &nbsp;<span class="hide">X  </span></div>
+		 		 
+		 		 		
+		 
+	 
+               
+                		 		 
+		 		  <div class="alert error" style="float: left;">Vehicle no TN 85 0212 is Already Vehicle FC  Expire on 26/02/2016 ( 22 days before) &nbsp;<span class="hide">X </span></div>
+		 		 		
+		 
+	 
+               
+                 
+                
+                
+                		   </div>
+		 
+		 		
+		
+		<!-- Begin of #user-info -->
+		<div id="user-info">
+			<p>
+				<span class="messages">Academic Year : 2016-2017 | Hello <a href="javascript:void(0);"></a></span>
+					<a href="ssetting.php" class="button">Settings</a> <a href="logout.php" class="button red">Logout</a>
+			</p>
+		</div> <!--! end of #user-info -->
+		
+    </header></div>    <!--! end of #header -->
+    <div class="fix-shadow-bottom-height"></div>
+	
+	<!-- Begin of Sidebar -->
+    <aside id="sidebar">
+    	
+    	<!-- Search -->
+    	    	<div id="search-bar">
+			<form id="search-form" name="search-form" action="" method="post">
+				<input type="text" id="query" name="query" autocomplete="off" value="Search">
+			</form>
+		</div> <!--! end of #search-bar -->
+		
+		<!-- Begin of #login-details -->
+		 <section id="login-details">
+    		<img class="img-left framed" src="img/misc/avatar_small.png" alt="Hello Admin">
+    		<h3>Logged in as</h3>
+    		<h2><a class="user-button" href="javascript:void(0);">&nbsp;<span class="arrow-link-down"></span></a></h2>
+    		<ul class="dropdown-username-menu">
+    	    			<li><a href="">Profile</a></li>
+    			<li><a href="ssetting.php">Settings</a></li>
+    			<li><a href="">Messages</a></li>
+    			
+    			<li><a href="logout.php">Logout</a></li>
+    		</ul>
+    		
+    		<div class="clearfix"></div>
+ </section>
+          <!--! end of #login-details -->
+    	
+    	<!-- Begin of Navigation -->
+    	<nav id="nav">
+	    	<ul class="menu collapsible shadow-bottom">
+	    	
+	     	   <li><a href="dashboard.php"><img src="img/icons/packs/fugue/16x16/dashboard.png">Dashboard</a></li> 
+	     	                  	    		<li><a href="logout.php"><img src="img/icons/packs/fugue/16x16/door-open-in.png">logout</a></li>
+	    		<!--<li>
+	    			<a href="javascript:void(0);"><img src="img/icons/packs/fugue/16x16/user-white.png">Example Submenu<span class="badge red">42</span></a>
+	    			<ul class="sub">
+	    				<li><a href="javascript:void(0);">Lorem ipsum #1</a></li>
+	    				<li><a href="javascript:void(0);">Lorem ipsum #2</a></li>
+	    				<li><a href="javascript:void(0);">Lorem ipsum #3</a></li>
+	    			</ul>
+	    		</li>	-->    		
+	    	</ul>
+    	</nav>         <!--! end of #nav -->
+    	
+    </aside> <!--! end of #sidebar -->
+    
+    <!-- Begin of #main -->
+    <div id="main" role="main">
+    	
+            	<!-- Begin of titlebar/breadcrumbs -->
+		<div id="title-bar">
+			<ul id="breadcrumbs">
+				<li><a href="dashboard.php" title="Home"><span id="bc-home"></span></a></li>
+                <li class="no-hover"><a href="board_select_fees.php" title="CBSE">CBSE</a></li>
+				<li class="no-hover">Fees Paymant</li> 
+			</ul>
+		</div> <!--! end of #title-bar -->
+		
+		<div class="shadow-bottom shadow-titlebar"></div>
+		
+		<!-- Begin of #main-content -->
+		<div id="main-content">
+			<div class="container_12">
+			<div class="grid_12">
+            <div class="_25" style="float:right">
+                <label for="select">Board :</label>
+                                	<select name="bid" id="bid" class="required" onchange="change_function()"><option value='1' selected>CBSE</option>
+</select>								</select>
+                 </div>
+                 <div class="_25" style="float:right">
+                <label for="select">Standard</label>
+                                	<select name="cid" id="cid" class="required" onchange="change_function2()"> <option value="">All</option><option value='51'>PLAY SCHOOL</option>
+<option value='52'>PRE KG</option>
+<option value='53'>LKG</option>
+<option value='54'>UKG</option>
+<option value='55'>I</option>
+<option value='56'>II</option>
+<option value='57'>III</option>
+<option value='58'>IV</option>
+<option value='59'>V</option>
+<option value='60'>VI</option>
+<option value='61'>VII</option>
+<option value='62'>VIII</option>
+<option value='63'>IX</option>
+</select>								</select>
+                 </div>
+                 
+				<h1><a href="billing.php?bid=1" style="margin:3px 0 0 20px;"><button class="btn btn-small btn-primary"><img src="img/icons/packs/fugue/16x16/arrow-curve-180-double.png"> Back </button></a>  Invoice</h1>
+                				<div>   
+                           
+                <form name="form1" method="post" action="" id="validate-form1" class="block-content-invoice form">
+<input type="hidden" name="pid" />
+<input type="hidden" name="dtype" id="dtype" />
+<input type="hidden" name="bid" value="1" />
+<input type="hidden" name="command" />
+                						
+						<div id="invoice" class="widget widget-plain" class="widget-content">	
+				<ul class="client_details">
+					<li><strong class="name">FR Number : CM005</strong><input type="hidden" class="medium" name="frno" value="CM005"/></li>
+                    <li>Class - Section: I - A<input type="hidden" class="medium" name="cid1" value="55"/></li>
+					<li>Gender: Male<input type="hidden" class="medium" name="bid1" value="1"/></li>
+				</ul>
+                <ul class="client_details">
+					<li>Student Name : <strong class="name">kumar  s</strong> <input type="hidden" class="medium" name="ss_name" value="kumar  s"/></li>
+					<li>Admission No: SKS3415 <input type="hidden" class="medium" name="adminid" value="SKS3415"/></li>
+					<li>Stu. Category: <b>Before IB</b><input type="hidden" class="medium" name="sid1" value="201"/><input type="hidden" class="medium" name="scateg" value="0"/><input type="hidden" class="medium" name="sfood" value="0"/></li>					
+				</ul>
+                <ul class="client_details">
+					<li>Academic Year : <strong class="name">2016-2017</strong><input type="hidden" class="medium" name="ssid1" value="8383"/></li>
+					<li>Parent's Name: sekar <input type="hidden" class="medium" name="category" value=""/></li>
+                    <li>Student Type : <b>New</b> Student <input type="hidden" class="medium" name="stype" value="New"/></li>										
+				</ul>
+				<ul class="client_details">
+					<li>Status: <span class="ticket ticket-info">Open</span></li>
+					<li><strong>Invoice Date :</strong> <input id="datepicker" name="idate" type="text" value="19/03/2016"  style="width:60%"/></li>                    
+				</ul>
+                <div class="_25" style="float:right">
+                <select name="cartid" id="cartid" onchange="addd()">
+                			<option value="">Add fees</option>
+                                	</select>								</select>
+                 </div>
+                                 <table id="table-example1" class="table">
+                                			<thead>
+								<tr>
+                                	<th width="5"><span id="multi_delete" hidden="true"><img src="img/del.png" onClick="multidelete()"  name="multi_delete" alt="delete"></span></th>
+									<th>S.No</th>
+                                    <th colspan="3"><center>Group Name</center></th>
+                                                                        <th colspan="1">Fees Amount</th>
+                            	    <th>Total</th>
+                                    <th>Discount</th>
+                                    <th class="total">Pay Amount</th>
+                                    <th width="10"></th>
+								</tr>
+							</thead>
+                            <tbody>
+                			                             <tr style="border:1px #B7B7B7 dotted;background-color:#FF0004;">
+                             	<td id="multi_id"><center><input type="checkbox" name="multivalue[]" onClick="multi_check()" value="24,2"></center></td>
+                             	<td>1</td>
+                                <td colspan="3">Registration Fee (New Student)</td>
+                                                                <td >-                                </td>
+                                <td>-</td>
+                                <td style="vertical-align: middle;"><center>-</center>
+                                </td>
+                                <td>
+                                	Fully Paid                                </td>
+                                <td>
+                                	                                </td>
+                             </tr>
+                             </tbody>
+                                                          <tr style="border:1px #B7B7B7 dotted;background-color:#FF0004;">
+                             	<td id="multi_id"><center><input type="checkbox" name="multivalue[]" onClick="multi_check()" value="74,2"></center></td>
+                             	<td>2</td>
+                                <td colspan="3">Admission Fee (New Student)</td>
+                                                                <td >10000                                </td>
+                                <td>10000</td>
+                                <td style="vertical-align: middle;"><center>-</center>
+                                </td>
+                                <td>
+                                	                                	<input type="text" name="fees74" id="fees74" class="biginput txt" id="autocomplete" class="required" value="10000" autocomplete="off" max="10000" />
+                                                                    </td>
+                                <td>
+                                	                                	<a href="javascript:del(74,2)"><img src="Book_inventory/images/del.png" alt="delete"></a>
+                                                                    </td>
+                             </tr>
+                             </tbody>
+                                                          <tr style="border:1px #B7B7B7 dotted;background-color:#FF0004;">
+                             	<td id="multi_id"><center><input type="checkbox" name="multivalue[]" onClick="multi_check()" value="94,2"></center></td>
+                             	<td>3</td>
+                                <td colspan="3">School Uniform Fees</td>
+                                                                <td >2200                                </td>
+                                <td>2200</td>
+                                <td style="vertical-align: middle;"><center>-</center>
+                                </td>
+                                <td>
+                                	                                	<input type="text" name="fees94" id="fees94" class="biginput txt" id="autocomplete" class="required" value="2200" autocomplete="off" max="2200" />
+                                                                    </td>
+                                <td>
+                                	                                	<a href="javascript:del(94,2)"><img src="Book_inventory/images/del.png" alt="delete"></a>
+                                                                    </td>
+                             </tr>
+                             </tbody>
+                                                          <!--</table>
+                        <table id="table-example1" class="table">-->
+                       	<thead>
+								<tr>
+                                	<th width="5"><span id="multi_delete" hidden="true"><img src="img/del.png" onClick="multidelete()"  name="multi_delete" alt="delete"></span></th>
+									<th>S.No</th>
+                                    <th><center>Group Name</center></th>
+                                                                        <th>I Term</th>
+                            	                                    <th>II Term</th>
+                            	                                    <th>III Term</th>
+                            	                            	    <th>Total</th>
+                                    <th>Discount</th>
+                                    <th class="total">Pay Amount</th>
+                                    <th width="10"></th>
+								</tr>
+							</thead>
+							<tbody>
+                                                        <tr style="border:1px #B7B7B7 dotted;">
+                                                        		<td id="multi_id" rowspan=""  style="vertical-align: middle;"><center><input type="checkbox" name="multivalue[]" onClick="multi_check()" value="1,1"></center></td>
+                                                                        <td>4</td>
+                                    <td>Book&Note Books</td>
+                                                                        <td >-                                    </td>
+                                                                        <td >-                                    </td>
+                                                                        <td >-                                    </td>
+                                                                        <td>-</td>
+                                                                            <td rowspan="" style="vertical-align: middle;"><center>-</center></td>
+                                    <td rowspan="" style="vertical-align: middle;">
+										                                    </td>
+                                    <td rowspan="" style="vertical-align: middle;">
+										                                    </td>
+                                                                 </tr>
+                                                         <tr style="border:1px #B7B7B7 dotted;">
+                                                        		<td id="multi_id" rowspan=""  style="vertical-align: middle;"><center><input type="checkbox" name="multivalue[]" onClick="multi_check()" value="3,1"></center></td>
+                                                                        <td>5</td>
+                                    <td>Tuition Fees</td>
+                                                                        <td >18000                                    </td>
+                                                                        <td >13000                                    </td>
+                                                                        <td >11000                                    </td>
+                                                                        <td>42000</td>
+                                                                            <td rowspan="" style="vertical-align: middle;"><center>-</center></td>
+                                    <td rowspan="" style="vertical-align: middle;">
+										                                        <input type="text" name="termfees3" id="termfees3" class="biginput txt" id="autocomplete" class="required" value="42000" autocomplete="off" max="42000" />
+                                                                            </td>
+                                    <td rowspan="" style="vertical-align: middle;">
+										                                        <a href="javascript:del(33,1)"><img src="Book_inventory/images/del.png" alt="delete"></a>
+                                                                            </td>
+                                                                 </tr>
+                                                         <tr style="border:1px #B7B7B7 dotted;">
+                                                        		<td id="multi_id" rowspan=""  style="vertical-align: middle;"><center><input type="checkbox" name="multivalue[]" onClick="multi_check()" value="4,1"></center></td>
+                                                                        <td>6</td>
+                                    <td>Lab Fees</td>
+                                                                        <td >-                                    </td>
+                                                                        <td >-                                    </td>
+                                                                        <td >-                                    </td>
+                                                                        <td>-</td>
+                                                                            <td rowspan="" style="vertical-align: middle;"><center>-</center></td>
+                                    <td rowspan="" style="vertical-align: middle;">
+										                                    </td>
+                                    <td rowspan="" style="vertical-align: middle;">
+										                                    </td>
+                                                                 </tr>
+                                                         <tr style="border:1px #B7B7B7 dotted;">
+                                                        		<td id="multi_id" rowspan=""  style="vertical-align: middle;"><center><input type="checkbox" name="multivalue[]" onClick="multi_check()" value="5,1"></center></td>
+                                                                        <td>7</td>
+                                    <td>Smart Class</td>
+                                                                        <td >-                                    </td>
+                                                                        <td >-                                    </td>
+                                                                        <td >-                                    </td>
+                                                                        <td>-</td>
+                                                                            <td rowspan="" style="vertical-align: middle;"><center>-</center></td>
+                                    <td rowspan="" style="vertical-align: middle;">
+										                                    </td>
+                                    <td rowspan="" style="vertical-align: middle;">
+										                                    </td>
+                                                                 </tr>
+                                                         <tr style="border:1px #B7B7B7 dotted;">
+                                                        		<td id="multi_id" rowspan=""  style="vertical-align: middle;"><center><input type="checkbox" name="multivalue[]" onClick="multi_check()" value="6,1"></center></td>
+                                                                        <td>8</td>
+                                    <td>SPORTS UNIFORM</td>
+                                                                        <td >-                                    </td>
+                                                                        <td >-                                    </td>
+                                                                        <td >-                                    </td>
+                                                                        <td>-</td>
+                                                                            <td rowspan="" style="vertical-align: middle;"><center>-</center></td>
+                                    <td rowspan="" style="vertical-align: middle;">
+										                                    </td>
+                                    <td rowspan="" style="vertical-align: middle;">
+										                                    </td>
+                                                                 </tr>
+                                                          <tr>
+                             	<td></td>
+                                <td></td>
+                                <td><b>Total Terms Fee</b></td>
+                                <td><b>18000</b></td>
+                                <td><b>13000</b></td>
+                                <td><b>11000</b></td>
+                                <td><b>42000</b></td>
+                             </tr>
+                                                          <tr>
+							<td class="sub_total" colspan="7"></td>
+							<td class="sub_total">Subtotal:</td>
+							<td class="sub_total">Rs. <span id="fstotal">54,200.00</span></td>
+						</tr>
+						<tr class="total_bar">
+							<td class="grand_total" colspan="7"></td>
+							<td class="grand_total">Total:</td>
+							<td class="grand_total">Rs. <span id="fgtotal">54,200.00</span><input type="hidden" class="medium" name="total" id="finaltotal" value="54200"/></td>
+						</tr>
+                        <tr>
+							<td colspan="10" align="right">	
+									<div class="_25">
+                                    <p>
+                                    <label for="textfield">Payment Type:</label>
+										<select name="ptype" id="ptype" class="required" onchange="paymet_type()">
+											<!--<option value="">Please select</option>-->
+                                            <option value="cash">Cash</option>	
+                                            <option value="card">Card</option>
+                                            <option value="cheque">cheque</option>									
+										</select>	
+                                    </p>									
+									</div>
+                                    <div id="ajax_pay">
+									</div>
+                                    <div id="cash_pay">
+                                    <div class="_25">
+                                    <p>
+                                        <label for="textfield">Get Amount </label>
+                                        <input id="textfield" name="get_amount" id="get_amount" class="getamount" type="text" value="" />
+                                    </p>
+                                    </div>
+                                    <div class="_25">
+                                    <p>
+                                        <label for="textfield">Given Balance</label>
+                                        <input id="textfield" name="balance" id="balanace" type="text" value="" readonly/>
+                                    </p>
+                                    </div>
+                                    </div>
+                            </td>
+						</tr>
+				<tr>
+                <td colspan="10" align="right">
+                <span id="billpay">
+                <input type="button" value="Clear" class="btn  btn-blue" onClick="clear_cart()" style="width:100px">&nbsp;&nbsp;
+                <input type="submit" value="Submit" name="place-order" class="btn btn-green" onClick="return confirm('are you sure you wish to Submit this Details');" style="width:100px">&nbsp;&nbsp;
+                <input type="button" value="cancel" class="btn btn-red" onClick="cancel_cart()" style="width:100px"></span>
+                <span id="billupdate" style="display:none; float:right">
+                <input type="button" value="Update" class="btn  btn-green" onClick="update_cart()" style="width:100px">&nbsp;&nbsp;
+                </span>
+                </td>
+                </tr>
+                <!-- *************************** Old Student Total End ************************** -->
+							</tbody>
+						</table>
+				<table class="table table-striped" id="table-example">	
+                				</table>
+				
+				<hr>
+			</div>
+			</div>
+            </form>
+		        <div class="clear height-fix"></div>
+        </div>
+        </div>
+        </div> <!--! end of #main-content -->
+  </div> <!--! end of #main -->
+
+    
+      <footer id="footer"><div class="container_12">
+		<div class="grid_12">
+        	<div class="footer-icon align-center"><a class="top" href="#top"></a></div>
+            <span style="float:right; margin-top:-40px; color:#E1E0E0"></span>
+		</div>
+    </div>
+</footer>
+ <script src="js/jquery.min.js"></script>
+ <script type="text/javascript">
+	$().ready(function() {
+		 var thisPage = GetCurrentPageName();
+		 var myarray=null;
+		
+		  $(".sub li a").each(function(){
+	           var status_id = $(this).attr('href');
+	           if(thisPage==status_id){
+	        	  $(this).parents().addClass('sub1');
+				  $(this).parents().prev().addClass('current');
+				  $(this).addClass('current');
+	           }	          
+	        });
+			$(".menu li a").each(function(){
+	           var status_id = $(this).attr('href');
+	           if(thisPage==status_id){
+	        	  $(this).addClass('current');
+	           }	          
+	        });
+
+						$(".sub li a").hide();
+			 $(".sub li a").each(function(){
+				 if(myarray!=null){
+		           var status_id = $(this).attr('href');
+		           
+		           if(jQuery.inArray(status_id, myarray)!==-1){
+		        	   
+		        	   $(this).show();
+					  
+		           }	 
+				 }         
+		        });
+$(".nav1  li a").show();
+
+			/*if(jQuery.inArray("test", myarray)!==-1){
+			    // the element is not in the array
+			    alert("in");
+			}*/
+			
+	  });
+	
+	function GetCurrentPageName() {
+        var sPath = window.location.pathname;
+        var sPage = sPath.substring(sPath.lastIndexOf('/') + 1);
+       // var index = sPage.indexOf('.');
+        //sPage = sPage.substring(0, index);
+        return sPage.toLowerCase();
+  }
+
+	function GetCurrentPageName() {
+        var sPath = window.location.pathname;
+        var sPage = sPath.substring(sPath.lastIndexOf('/') + 1);
+       // var index = sPage.indexOf('.');
+        //sPage = sPage.substring(0, index);
+        return sPage.toLowerCase();
+  }
+  </script>
+
+  </div> <!--! end of #container -->
+
+
+  <!-- JavaScript at the bottom for fast page loading -->
+
+  <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
+  <script src="js/jquery.min.js"></script>
+  <script>window.jQuery || document.write('<script src="js/libs/jquery-1.6.2.min.js"><\/script>')</script>
+
+
+  <!-- scripts concatenated and minified via ant build script-->
+  <script defer src="js/plugins.js"></script> <!-- lightweight wrapper for consolelog, optional -->
+  <!--<script defer src="js/mylibs/jquery-ui-1.8.15.custom.min.js"></script>  jQuery UI -->
+  <script defer src="js/mylibs/jquery.notifications.js"></script> <!-- Notifications  -->
+  <script defer src="js/mylibs/jquery.uniform.min.js"></script> <!-- Uniform (Look & Feel from forms) -->
+  <script defer src="js/mylibs/jquery.validate.min.js"></script> <!-- Validation from forms -->
+  <script defer src="js/mylibs/jquery.dataTables.min.js"></script> <!-- Tables -->
+  <script defer src="js/mylibs/jquery.tipsy.js"></script> <!-- Tooltips -->
+  <script defer src="js/mylibs/excanvas.js"></script> <!-- Charts -->
+  <script defer src="js/mylibs/jquery.visualize.js"></script> <!-- Charts -->
+  <script defer src="js/mylibs/jquery.slidernav.min.js"></script> <!-- Contact List -->
+  <script defer src="js/common.js"></script> <!-- Generic functions -->
+  <script defer src="js/script.js"></script> <!-- Generic scripts -->
+  <script defer src="js/zebra_datepicker.js"></script>
+  
+  <!-- end scripts-->
+
+  <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.
+       chromium.org/developers/how-tos/chrome-frame-getting-started -->
+  <!--[if lt IE 7 ]>
+    <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+    <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
+  <![endif]-->
+    <script language="javascript">
+	function del(pid,type){
+		if(confirm('Do you really mean to delete this item')){
+			document.form1.pid.value=pid;
+			document.form1.dtype.value=type;
+			document.form1.command.value='delete';
+			document.form1.submit();
+		}
+	}
+	function addd(){
+		var x = document.getElementById("cartid").value;
+		var res = x.split("-");
+		//alert(res[0]);
+			document.form1.pid.value=res[0];
+			document.form1.dtype.value=res[1];
+			document.form1.command.value='add';
+			document.form1.submit();
+	}
+	function clear_cart(){
+		if(confirm('This will empty your Billing, continue?')){
+			document.form1.command.value='clear';
+			document.form1.submit();
+		}
+	}
+	function update_cart(){
+		document.form1.command.value='update';
+		document.form1.submit();
+	}
+	function cancel_cart(){
+		if(confirm('This will cancel your Bill, continue?')){
+			document.form1.command.value='cancel';
+			document.form1.submit();
+		}
+	}
+		function paymet_type() {
+			var x = document.getElementById("ptype").value;
+			if(x != "cash"){
+				$('#cash_pay').hide();
+			}else{
+				$('#cash_pay').show();
+			}
+			$.get("payment_type.php",{value:x},function(data){
+			$( "#ajax_pay" ).html(data);
+			});	
+		}
+</script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+	var validateform = $("#validate-form1").validate();
+	$("#fees_type").change(function(){
+		//alert("test");
+        var thiss = $(this);
+        var value = thiss.val(); 
+        $.get("feestype_calculate.php",{value:value},function(data){
+			$( "#test" ).html(data);
+        });
+    });
+	function currencyFormat (num) {		
+    return num.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
+	}
+	$(".txt").each(function() { 
+            $(this).keyup(function(){
+				var textBoxVal=0;
+				var allInputs = document.getElementsByClassName("txt");
+				//alert(allInputs.length);
+				for (var i = 0; i < allInputs.length; i++)
+				   if (allInputs[i].type === "text") {
+					   var fvalue=allInputs[i].value;
+					   textBoxVal = Number(fvalue)+textBoxVal;
+				   } 
+				   
+				   textBoxVal1=currencyFormat(textBoxVal);
+				   $("#fgtotal").html(textBoxVal1);
+				   $("#fstotal").html(textBoxVal1);
+				   $("#finaltotal").val(textBoxVal);
+				//alert(textBoxVal);
+               //$('#billupdate').show();
+			   //$('#billpay').hide();
+            });
+        }); 
+	 $(".getamount").each(function() { 
+            $(this).keyup(function(){
+				var a = document.form1.get_amount.value;
+				var total = 54200;
+				var balance = (a-total);
+				if(balance<0){
+					balance=0;
+				}
+				document.form1.balance.value = balance;
+            });
+        });
+		$("#poor").change(function(){
+			if(this.checked) {
+       			$('#poor_student').show();
+			}else{
+				$('#poor_student').hide();				
+			}
+    	});	
+		$( "#datepicker" ).Zebra_DatePicker({
+        format: 'd/m/Y'
+    });	
+		$(".fundcal").each(function() { 
+            $(this).keyup(function(){
+				var a = document.form1.poor_pay_amount.value;
+				var total = 54200;
+				var balance = (total-a);
+				if(balance<0){
+					balance=0;
+				}
+				document.form1.funds.value = balance;
+			 });			
+			});		
+	
+    function languageChange()
+    {
+         var lang = $('#fgroup option:selected').val();
+        return lang;
+    }  
+});
+function change_function() { 
+     var cid =document.getElementById('bid').value;
+	 window.location.href = 'billing.php?bid='+cid;	  
+	}
+	function change_function2() { 
+     var cid =document.getElementById('cid').value;
+	 window.location.href = 'billing.php?bid=1&cid='+cid;	  
+	}	
+	
+	function multi_check()
+		{		
+				 var checkboxes = $("#multi_id  input[type=checkbox]");					 
+					for (var i=0, no=checkboxes.length;i<no;i++) {						 
+						  if (checkboxes[i].checked){
+							  $("#multi_delete").show();
+							  return false;
+						  }else{
+							  $("#multi_delete").hide();
+						  }
+						  }
+				/*if($('#multi_id').attr('checked')) {
+					 $("#multi_delete").show();
+				}else{
+					$("#multi_delete").hide();
+				}
+		*/
+			 }
+		 function multidelete()
+		 {
+			 if(confirm('Do you really mean to delete this item')){
+				 var checkboxes = $("#multi_id  input[type=checkbox]");				 
+					for (var i=0, no=checkboxes.length;i<no;i++) {						 
+						  if (checkboxes[i].checked){							  
+							  var x=checkboxes[i].value;
+							 /* $.get("multidelete_payment.php",{value:x},function(data){									
+									});	*/							  
+						  }else{							  
+						  }
+						  }				 
+					document.form1.command.value='multidelete';
+					document.form1.submit();
+			 }
+		 }
+</script>
+</body>
+</html>
+<? ob_flush(); ?>

@@ -1,0 +1,17 @@
+.field-group .field,.field-group select, .select2-container.select2 {
+	width:100% !important;	
+}
+.div_check{
+	float:left;
+        margin: 0px 10px;
+}
+div.selector {
+    display: none;
+}
+
+.form .field-group .field label.myErrorClass {
+    color: red;
+    font-size: 11px;
+    /*    font-style: italic;*/
+    display: block;
+}

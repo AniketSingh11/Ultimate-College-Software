@@ -1,0 +1,597 @@
+<? ob_start(); ?>
+<?php
+error_reporting(E_ALL ^ E_NOTICE);
+ include("head_top.php");   
+ if (isset($_POST['submit']))
+{
+	
+	$fgid=$_POST['fg_id'];
+	$cid=$_POST['cid'];
+	$bid=$_POST['bid'];
+	$rate=$_POST['rate'];
+	$sid=$_POST['sid'];
+	
+	$cl=mysql_query("select * from class where c_id=$cid");
+        $cname=mysql_fetch_assoc($cl)['c_name'];
+	if($fgid=='1'){
+	/*$qry=mysql_query("SELECT * FROM frate WHERE fg_id=$fgid AND ay_id=$acyear AND b_id=$bid AND c_id=$cid AND s_id=$sid");							
+	$row=mysql_fetch_array($qry);	
+	if($row){
+		header("Location:feesrate.php?cid=$cid&bid=$bid&sid=$sid&msg=err");
+		exit;
+	}*/
+					$qry2=mysql_query("SELECT * FROM fgroup_detail where fg_id!=4 AND otherfees='0'");													
+									  while($row2=mysql_fetch_array($qry2))
+										{
+											$fgdid=$row2['fgd_id'];
+											$type=$row2['type'];
+											$select_record=mysql_query("SELECT * FROM fgroup LIMIT 0,3");
+											$count=1;
+											while($student12=mysql_fetch_array($select_record))
+											{ 
+											$ffg_id=$student12['fg_id'];
+											 $fdis="fdisname".$fgdid."-".$ffg_id;
+											 $fdis1="afdisname".$fgdid."-".$ffg_id;
+											$fdisvalue=$_POST[$fdis]; 
+											$fdisvalue1=$_POST[$fdis1]; 
+											$fratelist=mysql_query("SELECT fr_id FROM frate WHERE ay_id=$acyear AND b_id=$bid AND c_id=$cid AND s_id=$sid AND fg_id=$ffg_id AND fgd_id=$fgdid");
+						$frate=mysql_fetch_array($fratelist);	
+						$frid=$frate['fr_id'];
+						
+											//echo "<br>";
+												if($frid){
+													//echo "update";
+													$cid=$_GET['cid'];
+							$grp=$_GET['group'];
+							$allsec=mysql_query("select * from section where c_id=$cid and g_name='$grp' and ay_id='$acyear'");
+							while($row=mysql_fetch_assoc($allsec)){
+								$sid=$row['s_id'];
+								$sql=mysql_query("UPDATE frate SET rate='$fdisvalue',rate1='$fdisvalue1' WHERE fr_id='$frid' AND s_id=$sid") or die("Could not insert data into DB: " . mysql_error());
+							}
+							
+													
+												}else if(!$frid && $fdisvalue){
+													//echo "insert";
+													$cid=$_GET['cid'];
+													$grp=$_GET['group'];
+													$allsec=mysql_query("select * from section where c_id=$cid and g_name='$grp' and ay_id='$acyear'");
+													while($row=mysql_fetch_assoc($allsec)){
+														$sid=$row['s_id'];
+														$sql=mysql_query("INSERT INTO frate (fg_id,fgd_id,rate,rate1,c_id,b_id,ay_id,s_id) VALUES ('$ffg_id','$fgdid','$fdisvalue','$fdisvalue1','$cid','$bid','$acyear',$sid)");	
+													}	
+												}
+											
+											}
+										}
+					
+					//die();
+//$result = mysql_query($sql) or die("Could not insert data into DB: " . mysql_error());
+    if($sql){
+        header("Location:feesrate.php?cid=$cid&bid=$bid&sid=$sid&msg=succ");
+    }
+    exit;
+	}else if($fgid=='2'){
+		$qry2=mysql_query("SELECT * FROM fgroup_detail where fg_id=4 AND otherfees='0'");													
+			  while($row2=mysql_fetch_array($qry2))
+				{
+					$fgdid=$row2['fgd_id'];
+					$type=$row2['type'];
+					$fdis="fdisname".$fgdid;
+					$fdisvalue=$_POST[$fdis];
+					$fdis1="afdisname".$fgdid;
+					$fdisvalue1=$_POST[$fdis1]; 
+					$fratelist=mysql_query("SELECT fr_id,rate FROM frate WHERE ay_id=$acyear AND b_id=$bid AND c_id=$cid AND s_id=$sid AND fg_id=4 AND fgd_id=$fgdid");
+						$frate=mysql_fetch_array($fratelist);
+						$frid=$frate['fr_id'];
+						if($frid){
+							//echo "update";
+							$cid=$_GET['cid'];
+							$grp=$_GET['group'];
+							$cid=$_GET['cid'];
+							$grp=$_GET['group'];
+							$allsec=mysql_query("select * from section where c_id=$cid and g_name='$grp' and ay_id='$acyear'");
+							while($row=mysql_fetch_assoc($allsec)){
+								$sid=$row['s_id'];
+							$sql=mysql_query("UPDATE frate SET rate='$fdisvalue',rate1='$fdisvalue1' WHERE fr_id='$frid' and s_id=$sid") or die("Could not insert data into DB: " . mysql_error());	
+							}
+							
+														
+					}else if(!$frid &&$fdisvalue){
+							$cid=$_GET['cid'];
+							$grp=$_GET['group'];
+							$allsec=mysql_query("select * from section where c_id=$cid and g_name='$grp' and ay_id='$acyear'");
+							while($row=mysql_fetch_assoc($allsec)){
+								$sid=$row['s_id'];
+								$sql=mysql_query("INSERT INTO frate (fg_id,fgd_id,rate,rate1,c_id,b_id,ay_id,s_id) VALUES ('4','$fgdid','$fdisvalue','$fdisvalue1','$cid','$bid','$acyear','$sid')");
+							}
+							
+							
+						}					
+				}
+	}
+	if($sql){
+        
+       
+        	header("Location:feesrate.php?cid=$cid&bid=$bid&sid=$sid&msg=succ");
+      
+
+    }
+    exit;
+}
+
+ ?>
+ <style type="text/css">
+ #loader{position: fixed; left: 0px; top: 0px; height: 100%; width: 100%; z-index: 9999; background: url('../img/wpoint.png') left top repeat;}
+    #loader img{position: absolute; left: 50%; top: 50%;}
+</style>
+</head>
+<body id="top">
+<div id="loader" style='display:none'><img src="img/loader.gif"/></div>
+  <!-- Begin of #container -->
+  <div id="container">
+  	<!-- Begin of #header -->
+    <?php include("includes/header.php");?>
+    <!--! end of #header -->
+    
+    <div class="fix-shadow-bottom-height"></div>
+	
+	<!-- Begin of Sidebar -->
+    <aside id="sidebar">
+    	
+    	<!-- Search -->
+    	    	<?php include("includes/search.php"); ?>
+ <!--! end of #search-bar -->
+		
+		<!-- Begin of #login-details -->
+		<?php include("includes/login-details.php");?>
+         <!--! end of #login-details -->
+    	
+    	<!-- Begin of Navigation -->
+    	<?php include("nav.php");?>
+         <!--! end of #nav -->
+    	
+    </aside> <!--! end of #sidebar -->
+    
+    <!-- Begin of #main -->
+    <div id="main" role="main">
+    	<?php 
+		$bid=$_GET['bid'];
+		$cid=$_GET['cid'];
+		if(!$bid){
+			$boardlist1=mysql_query("SELECT * FROM board"); 
+								  $board1=mysql_fetch_array($boardlist1);
+		 $bid=$board1['b_id'];
+		}
+		$boardlist=mysql_query("SELECT * FROM board WHERE b_id=$bid"); 
+		$board=mysql_fetch_array($boardlist);		
+		?>
+    	<!-- Begin of titlebar/breadcrumbs -->
+		<div id="title-bar">
+			<ul id="breadcrumbs">
+				<li><a href="dashboard.php" title="Home"><span id="bc-home"></span></a></li>
+                 <li class="no-hover"><a href="board_select_feesrate.php" title="<?php echo $board['b_name'];?>"><?php echo $board['b_name'];?></a></li>
+				<li class="no-hover">Fees Rate</li>
+			</ul>
+		</div> <!--! end of #title-bar -->
+		
+		<div class="shadow-bottom shadow-titlebar"></div>
+		
+		<!-- Begin of #main-content -->
+		<div id="main-content">
+        	<div class="container_12">
+			    <a href="board_select_feesrate.php" style="margin:3px 0 0 20px;"><button class="btn btn-small btn-primary"><img src="img/icons/packs/fugue/16x16/arrow-curve-180-double.png"> Back </button></a>
+                <div class="_25" style="float:right">
+                <label for="select">Board :</label>
+                                	<?php
+                                            $classl = "SELECT * FROM board";
+                                            $result1 = mysql_query($classl) or die(mysql_error());
+                                            echo '<select name="bid" id="bid" class="required" onchange="change_function1()">';
+											while ($row1 = mysql_fetch_assoc($result1)):
+												if($bid ==$row1['b_id']){
+                                                echo "<option value='{$row1['b_id']}' selected>{$row1['b_name']}</option>\n";
+												} else {
+												echo "<option value='{$row1['b_id']}'>{$row1['b_name']}</option>\n";
+												}
+                                            endwhile;
+                                            echo '</select>';
+                                            ?>
+								</select>
+                 </div>
+                <div class="_25" style="float:right">
+                <label for="select">Standard</label>
+                                	<?php
+                                            $classl = "SELECT c_id,c_name FROM class WHERE b_id=$bid AND ay_id=$acyear";
+                                            $result1 = mysql_query($classl) or die(mysql_error());
+                                            echo '<select name="cid" id="cid" class="required" onchange="change_function()"> <option value="">Select Class</option>';
+											while ($row1 = mysql_fetch_assoc($result1)):
+											if($cid==$row1['c_id']){
+                                                echo "<option value='{$row1['c_id']}' selected>{$row1['c_name']}</option>\n";
+												} else {
+												echo "<option value='{$row1['c_id']}'>{$row1['c_name']}</option>\n";
+												}
+                                            endwhile;
+                                            echo '</select>';
+                                            ?>
+								</select>
+                 </div>
+            <?php
+							$sid=$_GET['sid'];
+							$rate=$_GET['rate'];
+							//$sid=$_GET['sid'];							
+				if($cid){
+							$classlist=mysql_query("SELECT * FROM class WHERE c_id=$cid"); 
+								  $class=mysql_fetch_array($classlist);
+								  if(!$sid && (($class['c_name']=="XI") || ($class['c_name']=="XII" || $class['c_name']=="XI STD") || ($class['c_name']=="XII STD"))){
+								  $qry1=mysql_query("SELECT * FROM section WHERE c_id=$cid AND ay_id=$acyear");
+								  $row1=mysql_fetch_array($qry1);
+								  $sid1=$row1['s_id'];
+								  header("Location:feesrate.php?cid=$cid&bid=$bid&sid=$sid1&group=I Group");
+								  }
+								  ?>
+                <?php
+				if($sid){
+					$sectionlist=mysql_query("SELECT * FROM section WHERE s_id=$sid"); 
+								  $section=mysql_fetch_array($sectionlist);	 
+								  
+							$qry=mysql_query("SELECT * FROM section WHERE c_id=$cid AND ay_id=$acyear group by g_name order by s_id desc ");
+							$count=1;
+			  while($row=mysql_fetch_array($qry))
+        		{  ?>
+                 <a href="<?php if($row['s_id']==$sid){ echo "#"; } else { ?>feesrate.php?cid=<?php echo $cid;?>&sid=<?php echo $row['s_id'];?>&bid=<?php echo $bid; }?>&group=<?= $row['g_name']?>" style="margin:10px 0 0 10px; float:right"><button class="btn btn-orange btn-small "><img src="img/icons/packs/fugue/16x16/user--plus.png">  <?php echo $row['g_name']; ?></button></a>					
+				 <?php }  } else { $sid="0";}?>
+                 <?php $msg=$_GET['msg'];
+				if($msg=="dsucc"){?>
+                <div class="alert success"><span class="hide">x</span>Your Record Successfully Deleted !!!</div>
+                 <?php }elseif($msg=="succ"){ ?>  
+                <div class="alert success"><span class="hide">x</span>Your Record Successfully Created !!!</div>
+                <?php }elseif($msg=="err"){ ?>  
+                <div class="alert error"><span class="hide">x</span>This fees rate already generated !!!</div>
+                <?php }  ?>  
+                 <div class="grid_12">
+                 <div class="block-border">
+					<form id="validate-form" class="block-content form" action="" method="post">
+						 <div class="_100">
+                         <p>
+                         <label for="textfield">Add / Edit Fees rate:</label>
+                         <select name="fg_id" id="fg_id" class="required" onchange="change_feerate()"> 
+                              	<option value="">Select Fee group</option>
+                              	<option value="1">Term Fees</option>
+                                <option value="2">Other Fees</option>
+                                </select>
+                          </p>
+                          <span></span>
+                          </div>  
+                           <div id="test">
+        						</div>                 
+                        <input type="hidden" name="cid" value="<?php echo $cid;?>" />
+                        <input type="hidden" name="rate" value="<?php echo $rate;?>" />
+                        <input type="hidden" name="bid" value="<?php echo $bid;?>" /> 
+                        <input type="hidden" name="sid" value="<?php echo $sid;?>" />                           
+						<div class="clear"></div>
+						<div class="block-actions">
+							<ul class="actions-left">
+								<li><a class="button red" id="reset-validate-form2" href="javascript:void(0);">Reset</a></li>
+							</ul>
+							<ul class="actions-left" id="actions-submit" style="display:none">
+                            <li><input type="submit" name="submit" class="button" value="Submit"></li>
+							</ul>
+						</div>
+					</form>
+				</div>
+                 </div>        
+            <div class="grid_12">
+				<div class="block-border" id="tab-panel-1">
+					<div class="block-header">
+						<h1>Fees Rate <?php echo $class['c_name']; if($sid){ echo " - ( ".$section['s_name']." ) ";}?></h1>
+						<ul class="tabs">
+							<li><a href="#tab-1">Old Student</a></li>
+							<li><a href="#tab-2">New Student</a></li>
+						</ul>
+					</div>
+					<div class="block-content tab-container">
+						<div id="tab-1" class="tab-content">
+                        <br>
+						<table id="table-example" class="table">
+							<thead>
+								<tr>
+									<th>S.No</th>
+                                    <th><center>Group Name</center></th>
+                                    <?php 							
+									$qry1=mysql_query("SELECT * FROM fgroup");							
+								  while($row1=mysql_fetch_array($qry1))
+									{ 
+									 ?>
+                                    <th><?php echo $row1['fg_name'];?></th>
+                            	<?php } ?>
+                            	    <th>Total</th>
+                                    <th>Action</th>
+								</tr>
+							</thead>
+							<tbody>
+                            <?php
+							$totalfees=0;
+								   $count=1;
+								   $term1=0;
+									$term2=0;
+									$term3=0;
+							$qry2=mysql_query("SELECT * FROM fgroup_detail where fg_id!=4 AND otherfees='0'");													
+									  while($row2=mysql_fetch_array($qry2))
+										{
+											$fgdid=$row2['fgd_id'];
+											$type=$row2['type'];
+											$ftype="";
+											if($type){
+												$ftype=" (New Student)";
+											}
+											?>
+                            <tr>
+                                    <td><?=$count?></td>
+                                    <td><?php echo $row2['name'].$ftype;?></td>
+                                    <?php 
+									
+									$select_record=mysql_query("SELECT * FROM fgroup LIMIT 0,3");
+					$total=0;
+					while($student12=mysql_fetch_array($select_record))
+					{ 
+						$ffg_id=$student12['fg_id'];
+						$fratelist=mysql_query("SELECT fr_id,rate FROM frate WHERE ay_id=$acyear AND b_id=$bid AND c_id=$cid AND s_id=$sid AND fg_id=$ffg_id AND fgd_id=$fgdid");
+						$frate=mysql_fetch_array($fratelist);
+						
+						if($ffg_id=='1'){
+							$term1+=$frate['rate'];
+						}else if($ffg_id=='2'){
+							$term2+=$frate['rate'];
+						}else if($ffg_id=='3'){
+							$term3+=$frate['rate'];
+						}
+						
+						$total+=$frate['rate'];
+						$totalfees+=$frate['rate'];?>
+                                    <td><?php if($frate['rate']){ echo $frate['rate']; } else{ echo " - "; }?></td>
+                                    <?php } ?>
+                                    <td>-</td>
+                                    <td><?php if($total){ echo $total; } else{ echo " - "; }?></td>
+                                    <td><?php if($total){?><a href="feesrate_delete.php?cid=<?php echo $cid; ?>&bid=<?php echo $bid;?>&frid=<?php echo $frate['fr_id'];?>&fg_id=<?php echo $ffg_id;?>&fgd_id=<?php echo $fgdid;?>&s_id=<?php echo $sid;?>" class="delete" title="delete" onClick="return confirm('are you sure you wish to delete this record');"><img src="./img/del.png" alt="delete"></a><?php } else{ echo " - "; }?></td>
+                            </tr>
+                             <?php $count++; } ?>
+                             <?php
+							 $total=0;
+							$qry2=mysql_query("SELECT * FROM fgroup_detail where fg_id=4 AND otherfees='0' AND type='0'");													
+									  while($row2=mysql_fetch_array($qry2))
+										{
+											$fgdid=$row2['fgd_id'];
+											$type=$row2['type'];
+											$ftype="";
+											if($type){
+												$ftype=" (New Student)";
+											}
+											?>
+                             <tr>
+                             	<td><?=$count?></td>
+                                <td><?php echo $row2['name'].$ftype;?></td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <?php
+						$fratelist=mysql_query("SELECT fr_id,rate FROM frate WHERE ay_id=$acyear AND b_id=$bid AND c_id=$cid AND s_id=$sid AND fg_id=4 AND fgd_id=$fgdid");
+						$frate=mysql_fetch_array($fratelist);
+						$total+=$frate['rate'];
+						$totalfees+=$frate['rate'];
+						 ?>
+                                <td><?php if($frate['rate']){ echo $frate['rate']; } else{ echo " - "; }?></td>
+                                <td><?php if($frate['rate']){ echo $frate['rate']; } else{ echo " - "; }?></td>
+                                <td><?php if($frate['rate']){?><a href="feesrate_delete.php?cid=<?php echo $cid; ?>&bid=<?php echo $bid;?>&frid=<?php echo $frate['fr_id'];?>&fg_id=<?php echo $ffg_id;?>&fgd_id=<?php echo $fgdid;?>&s_id=<?php echo $sid;?>" class="delete" title="delete" onClick="return confirm('are you sure you wish to delete this record');"><img src="./img/del.png" alt="delete"></a><?php } else{ echo " - "; }?></td>
+                             </tr>
+                             <?php $count++;} ?>
+                             <tr>
+                             	<td><?=$count?></td>
+                                <td><b>Total</b></td>
+                                <td><b><?=$term1?></b></td>
+                                <td><b><?=$term2?></b></td>
+                                <td><b><?=$term3?></b></td>
+                                <td><b><?=$total?></b></td>
+                                <td><b><?=$totalfees?></b></td>
+                                <td></td>
+                             </tr>
+<!-- *************************** Old Student Total End ************************** -->
+							</tbody>
+						</table>
+                        </div>
+						<div id="tab-2" class="tab-content">
+							<br>
+                            <table id="table-example1" class="table">
+							<thead>
+								<tr>
+									<th>S.No</th>
+                                    <th><center>Group Name</center></th>
+                                    <?php 							
+									$qry1=mysql_query("SELECT * FROM fgroup");							
+								  while($row1=mysql_fetch_array($qry1))
+									{ 
+									 ?>
+                                    <th><?php echo $row1['fg_name'];?></th>
+                            	<?php } ?>
+                            	    <th>Total</th>
+                                    <th>Action</th>
+								</tr>
+							</thead>
+							<tbody>
+                            <?php
+							$totalfees=0;
+								   $count=1;
+								   $term1=0;
+									$term2=0;
+									$term3=0;
+							$qry2=mysql_query("SELECT * FROM fgroup_detail where fg_id!=4 AND otherfees='0'");													
+									  while($row2=mysql_fetch_array($qry2))
+										{
+											$fgdid=$row2['fgd_id'];
+											$type=$row2['type'];
+											$ftype="";
+											if($type){
+												$ftype=" (New Student)";
+											}
+											?>
+                            <tr>
+                                    <td><?=$count?></td>
+                                    <td><?php echo $row2['name'].$ftype;?></td>
+                                    <?php 
+									
+									$select_record=mysql_query("SELECT * FROM fgroup LIMIT 0,3");
+					$total=0;
+					while($student12=mysql_fetch_array($select_record))
+					{ 
+						$ffg_id=$student12['fg_id'];
+						$fratelist=mysql_query("SELECT fr_id,rate FROM frate WHERE ay_id=$acyear AND b_id=$bid AND c_id=$cid AND s_id=$sid AND fg_id=$ffg_id AND fgd_id=$fgdid");
+						$frate=mysql_fetch_array($fratelist);
+						
+						if($ffg_id=='1'){
+							$term1+=$frate['rate'];
+						}else if($ffg_id=='2'){
+							$term2+=$frate['rate'];
+						}else if($ffg_id=='3'){
+							$term3+=$frate['rate'];
+						}
+						
+						$total+=$frate['rate'];
+						$totalfees+=$frate['rate'];?>
+                                    <td><?php if($frate['rate']){ echo $frate['rate']; } else{ echo " - "; }?></td>
+                                    <?php } ?>
+                                    <td>-</td>
+                                    <td><?php if($total){ echo $total; } else{ echo " - "; }?></td>
+                                    <td><?php if($total){?><a href="feesrate_delete.php?cid=<?php echo $cid; ?>&bid=<?php echo $bid;?>&frid=<?php echo $frate['fr_id'];?>&fg_id=<?php echo $ffg_id;?>&fgd_id=<?php echo $fgdid;?>&s_id=<?php echo $sid;?>" class="delete" title="delete" onClick="return confirm('are you sure you wish to delete this record');"><img src="./img/del.png" alt="delete"></a><?php } else{ echo " - "; }?></td>
+                            </tr>
+                             <?php $count++; } ?>
+                             <?php
+							 $total=0;
+							$qry2=mysql_query("SELECT * FROM fgroup_detail where fg_id=4 AND otherfees='0'");													
+									  while($row2=mysql_fetch_array($qry2))
+										{
+											$fgdid=$row2['fgd_id'];
+											$type=$row2['type'];
+											$ftype="";
+											if($type){
+												$ftype=" (New Student)";
+											}
+											?>
+                             <tr>
+                             	<td><?=$count?></td>
+                                <td><?php echo $row2['name'].$ftype;?></td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <?php
+						$fratelist=mysql_query("SELECT fr_id,rate FROM frate WHERE ay_id=$acyear AND b_id=$bid AND c_id=$cid AND s_id=$sid AND fg_id=4 AND fgd_id=$fgdid");
+						$frate=mysql_fetch_array($fratelist);
+						$total+=$frate['rate'];
+						$totalfees+=$frate['rate'];
+						 ?>
+                                <td><?php if($frate['rate']){ echo $frate['rate']; } else{ echo " - "; }?></td>
+                                <td><?php if($frate['rate']){ echo $frate['rate']; } else{ echo " - "; }?></td>
+                                <td><?php if($frate['rate']){?><a href="feesrate_delete.php?cid=<?php echo $cid; ?>&bid=<?php echo $bid;?>&frid=<?php echo $frate['fr_id'];?>&fg_id=<?php echo $ffg_id;?>&fgd_id=<?php echo $fgdid;?>&s_id=<?php echo $sid;?>" class="delete" title="delete" onClick="return confirm('are you sure you wish to delete this record');"><img src="./img/del.png" alt="delete"></a><?php } else{ echo " - "; }?></td>
+                             </tr>
+                             <?php $count++;} ?>
+                             <tr>
+                             	<td><?=$count?></td>
+                                <td><b>Total</b></td>
+                                <td><b><?=$term1?></b></td>
+                                <td><b><?=$term2?></b></td>
+                                <td><b><?=$term3?></b></td>
+                                <td><b><?=$total?></b></td>
+                                <td><b><?=$totalfees?></b></td>
+                                <td></td>
+                             </tr>
+<!-- *************************** Old Student Total End ************************** -->
+							</tbody>
+						</table>
+						</div>					
+					</div>					
+				</div>
+			</div>
+            <div class="clear height-fix"></div>
+<?php } ?>
+		</div></div> <!--! end of #main-content -->
+  </div> <!--! end of #main -->    
+    <?php include("includes/footer.php");?>
+  </div> <!--! end of #container -->
+  <!-- JavaScript at the bottom for fast page loading -->
+<link rel="stylesheet" type="text/css" href="css/jquery.dataTables.css">
+  <script type="text/javascript" language="javascript" src="js/jquery-1.9.1.min.js"></script>
+  <script>
+$.noConflict();
+jQuery( document ).ready(function( $ ) {
+	$('#table-example').dataTable();
+	$('#table-example1').dataTable();
+	$('#table-example2').dataTable();
+	$('#table-example3').dataTable();		
+// Code that uses jQuery's $ can follow here.
+});
+// Code that uses other library's $ can follow here.
+</script>
+	<script type="text/javascript" language="javascript" src="js/jquery.dataTables.js"></script>
+  <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
+  <script src="js/jquery.min.js"></script>
+  <script>window.jQuery || document.write('<script src="js/libs/jquery-1.6.2.min.js"><\/script>')</script>
+
+
+  <!-- scripts concatenated and minified via ant build script-->
+  <script defer src="js/plugins.js"></script> <!-- lightweight wrapper for consolelog, optional -->
+  <script defer src="js/mylibs/jquery-ui-1.8.15.custom.min.js"></script> <!-- jQuery UI -->
+  <script defer src="js/mylibs/jquery.notifications.js"></script> <!-- Notifications  -->
+  <script defer src="js/mylibs/jquery.uniform.min.js"></script> <!-- Uniform (Look & Feel from forms) -->
+  <script defer src="js/mylibs/jquery.validate.min.js"></script> <!-- Validation from forms -->
+  <script defer src="js/mylibs/jquery.tipsy.js"></script> <!-- Tooltips -->
+  <script defer src="js/mylibs/excanvas.js"></script> <!-- Charts -->
+  <script defer src="js/mylibs/jquery.visualize.js"></script> <!-- Charts -->
+  <script defer src="js/mylibs/jquery.slidernav.min.js"></script> <!-- Contact List -->
+  <script defer src="js/common.js"></script> <!-- Generic functions -->
+  <script defer src="js/script.js"></script> <!-- Generic scripts -->
+  
+  <script type="text/javascript">
+	$().ready(function() {		
+		var validateform = $("#validate-form").validate();
+		$("#reset-validate-form1").click(function() {
+			location.reload(); 			
+		});
+		$("#reset-validate-form2").click(function() {
+			location.reload(); 			
+		});
+		$("#tab-panel-1").createTabs();
+		
+	});
+  </script>
+  <!-- end scripts-->
+
+  <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.
+       chromium.org/developers/how-tos/chrome-frame-getting-started -->
+  <!--[if lt IE 7 ]>
+    <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+    <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
+  <![endif]-->
+  <script type="text/javascript" src="javascripts/jquery.easyui.min.js"></script>
+<script type="text/javascript">
+function change_function() { 
+     var cid =document.getElementById('cid').value;
+	  window.location.href = 'feesrate.php?cid='+cid+'&bid=<?php echo $bid;?>';	  
+}
+function change_function1() { 
+     var bid =document.getElementById('bid').value;
+	 window.location.href = 'feesrate.php?bid='+bid;	  
+	}
+function change_feerate() { 
+		$('#loader').show();
+      var fg_id =document.getElementById('fg_id').value;
+	  if(fg_id){
+		  $("#actions-submit").show();
+	  }else{
+		  $("#actions-submit").hide();
+	  }
+	  $.get("fees_calculate.php",{value:fg_id,cid:<?php if($cid){ echo $cid;}else{ echo "0";}?>,bid:<?php echo $bid;?>,sid:<?php if($sid){ echo $sid;}else{ echo "0";}?>},function(data){
+			$( "#test" ).html(data);
+			$('#loader').hide();
+        });	  
+}
+</script>  
+</body>
+</html>
+<? ob_flush(); ?>
